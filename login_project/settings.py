@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-==l%fq75r*+ziiyt_!q@zjy2r(s6ibww&y7yge*mxufd9#5#-v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['django-wsh3.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['django-wsh3.onrender.com', 'localhost', '127.0.0.1']
+
 
 
 # Application definition
@@ -128,6 +129,9 @@ STATIC_URL = '/static/'
 
 # Use this to collect static files in production
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# For production
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 # If using media files (like uploaded files), set this up as well
 MEDIA_URL = '/media/'
