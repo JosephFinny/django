@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-==l%fq75r*+ziiyt_!q@zjy2r(s6ibww&y7yge*mxufd9#5#-v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ALLOWED_HOSTS = ['django-wsh3.onrender.com']
+ALLOWED_HOSTS = ['django-wsh3.onrender.com', '127.0.0.1']
 
 
 # Application definition
@@ -78,13 +78,13 @@ WSGI_APPLICATION = 'login_project.wsgi.application'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "your_db_name",
-        "USER": "your_db_user",
-        "PASSWORD": "your_db_password",
-        "HOST": "your_db_host",
-        "PORT": "5432",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('DB_NAME', 'your_db_name'),
+        'USER': os.environ.get('DB_USER', 'your_db_user'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'your_db_password'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
 
@@ -139,3 +139,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = "/accounts/login/"
+PORT = os.environ.get('PORT', 8000)  # default to 8000 if not set
